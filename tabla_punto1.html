@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paralelo: Endosimbiontes Primarios, Secundarios y Kleptoplastos</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .table-container {
+            display: flex;
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+        
+        .left-section, .right-section {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .left-section {
+            background: linear-gradient(135deg, #ff6b6b15 0%, #ff6b6b05 100%);
+            border-right: 3px solid #e0e0e0;
+        }
+        
+        .right-section {
+            background: linear-gradient(135deg, #4ecdc415 0%, #4ecdc405 100%);
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .left-section .section-title {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+        }
+        
+        .right-section .section-title {
+            background: linear-gradient(135deg, #4ecdc4 0%, #2ecc71 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .comparison-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            font-weight: 600;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .left-section .comparison-table th {
+            background: linear-gradient(135deg, #ff6b6b20 0%, #ee5a2420 100%);
+            color: #c0392b;
+        }
+        
+        .right-section .comparison-table th {
+            background: linear-gradient(135deg, #4ecdc420 0%, #2ecc7120 100%);
+            color: #27ae60;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(0,0,0,0.02);
+        }
+        
+        .category-header {
+            background: #f1f3f5;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #495057;
+        }
+        
+        .left-section .category-header {
+            background: linear-gradient(90deg, #ff6b6b10 0%, transparent 100%);
+            color: #e74c3c;
+        }
+        
+        .right-section .category-header {
+            background: linear-gradient(90deg, #4ecdc410 0%, transparent 100%);
+            color: #27ae60;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        .left-section .highlight {
+            background: #ff6b6b20;
+            color: #c0392b;
+        }
+        
+        .right-section .highlight {
+            background: #4ecdc420;
+            color: #27ae60;
+        }
+        
+        .value-cell {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .divider-line {
+            position: absolute;
+            left: 50%;
+            top: 140px;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 100%);
+            z-index: 5;
+        }
+        
+        @media (max-width: 768px) {
+            .table-container {
+                flex-direction: column;
+            }
+            
+            .left-section {
+                border-right: none;
+                border-bottom: 3px solid #e0e0e0;
+            }
+            
+            .divider-line {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Diferencias y Similitudes</h1>
+            <p>Comparación entre endosimbiontes primarios, secundarios y kleptoplastos</p>
+        </div>
+        
+        <div class="divider-line"></div>
+        
+        <div class="table-container">
+            <!-- DIFERENCIAS CRÍTICAS -->
+            <div class="left-section">
+                <div class="section-title">Diferencias Críticas</div>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th width="25%">Aspecto</th>
+                            <th width="25%">Endosimbiontes Primarios</th>
+                            <th width="25%">Endosimbiontes Secundarios</th>
+                            <th width="25%">Kleptoplastos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-header">
+                            <td colspan="4">ARQUITECTURA Y ORIGEN</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Membranas</strong></td>
+                            <td class="value-cell"><span class="highlight">2 membranas</span> cianobacterianas</td>
+                            <td class="value-cell"><span class="highlight">3-4 membranas</span> (+ fagosomal/RE)</td>
+                            <td class="value-cell"><span class="highlight">3 membranas</span> en <em>R. viridis</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Origen plastidial</strong></td>
+                            <td class="value-cell">Cianobacteria directa</td>
+                            <td class="value-cell">Alga eucariota completa</td>
+                            <td class="value-cell">Solo plastidio sin núcleo algal</td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="4">INTEGRACIÓN GENÓMICA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Genoma plastidial</strong></td>
+                            <td class="value-cell">120-200 genes reducidos</td>
+                            <td class="value-cell">100-150 genes</td>
+                            <td class="value-cell"><span class="highlight">98,479 bp completo</span> idéntico a <em>Tetraselmis</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Genes nucleares</strong></td>
+                            <td class="value-cell">~2,000 transferidos</td>
+                            <td class="value-cell">Adicionales del alga</td>
+                            <td class="value-cell"><span class="highlight">276 genes</span> orígenes diversos (30% linajes rojos)</td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="4">SISTEMA DE TARGETING</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Señal de importación</strong></td>
+                            <td class="value-cell">Péptido tránsito simple</td>
+                            <td class="value-cell">Sistema bipartito</td>
+                            <td class="value-cell">Bipartito: <span class="highlight">166 clase I, 73 clase II</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Translocón</strong></td>
+                            <td class="value-cell">TOC/TIC completo</td>
+                            <td class="value-cell">TOC/TIC modificado</td>
+                            <td class="value-cell"><span class="highlight">TIC21 ancestral</span> + TIC20/110 únicos</td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="4">PERMANENCIA Y FUNCIÓN</td>
+                        </tr>
+                        <tr>
+                            <td><strong>División</strong></td>
+                            <td class="value-cell">Fisión binaria (FtsZ)</td>
+                            <td class="value-cell">Coordinada con célula</td>
+                            <td class="value-cell"><span class="highlight">Fisión no coordinada</span> (Fig. S4)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duración funcional</strong></td>
+                            <td class="value-cell">Permanente heredable</td>
+                            <td class="value-cell">Permanente heredable</td>
+                            <td class="value-cell"><span class="highlight">3-5 semanas</span>, vacuolas día 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dependencia</strong></td>
+                            <td class="value-cell">Total del núcleo</td>
+                            <td class="value-cell">Total (excepto nucleomorfos)</td>
+                            <td class="value-cell"><span class="highlight">Muerte sin <em>Tetraselmis</em></span> (~35 días)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- SIMILITUDES FUNDAMENTALES -->
+            <div class="right-section">
+                <div class="section-title">Similitudes Fundamentales</div>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">Característica</th>
+                            <th width="70%">Descripción Compartida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-header">
+                            <td colspan="2">MAQUINARIA FOTOSINTÉTICA CONSERVADA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fotosistemas</strong></td>
+                            <td class="value-cell">
+                                PSI y PSII funcionales, complejo citocromo b₆f, ATP sintasa<br>
+                                <span class="highlight">Genes core conservados</span>: <em>psbA</em>, <em>rbcL</em>, <em>atpA</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fijación de CO₂</strong></td>
+                            <td class="value-cell">
+                                RuBisCO activa, ciclo Calvin-Benson completo<br>
+                                <span class="highlight">RuBisCO activasa</span> en <em>R. viridis</em> (Fig. 5B)
+                            </td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="2">INTERCAMBIO METABÓLICO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exportación</strong></td>
+                            <td class="value-cell">
+                                Triosas-fosfato al citoplasma via transportadores<br>
+                                <span class="highlight">35 transportadores</span> en <em>R. viridis</em> (Dataset S1)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Productos</strong></td>
+                            <td class="value-cell">
+                                ATP, NADPH, azúcares fotosintéticos<br>
+                                <span class="highlight">δ¹³C = 33‰</span> confirma fotosíntesis activa (Tabla S1)
+                            </td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="2">REGULACIÓN Y MANTENIMIENTO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ritmo circadiano</strong></td>
+                            <td class="value-cell">
+                                Acumulación diurna/consumo nocturno<br>
+                                <span class="highlight">Polisacáridos citoplasmáticos</span> en <em>R. viridis</em> (Fig. 3)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Control de calidad</strong></td>
+                            <td class="value-cell">
+                                Chaperonas (cpn60), proteasas FtsH<br>
+                                <span class="highlight">cpn60β origen <em>Tetraselmis</em></span> (Fig. 5A)
+                            </td>
+                        </tr>
+                        
+                        <tr class="category-header">
+                            <td colspan="2">ORIGEN EVOLUTIVO COMÚN</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adquisición</strong></td>
+                            <td class="value-cell">
+                                Todos derivan de fagocitosis de organismos fotosintéticos<br>
+                                Retención selectiva del aparato fotosintético
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dependencia mutua</strong></td>
+                            <td class="value-cell">
+                                Hospedero provee nutrientes (N, P, S) y CO₂<br>
+                                Organelo/kleptoplasto provee carbono orgánico fijado
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
